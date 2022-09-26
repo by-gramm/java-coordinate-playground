@@ -1,26 +1,15 @@
 package fuel_injection;
 
-public class Avante extends Car {
+public class Avante extends AbstractCar {
 
-    private final double distance;
+    private static final double DISTANCE_PER_LITER = 15.0;
 
-    public Avante(double distance) {
-        this.distance = distance;
+    private Avante(double distance) {
+        super(distance, "Avante", DISTANCE_PER_LITER);
     }
 
-    @Override
-    double getEfficiency() {
-        return 15.0;
-    }
-
-    @Override
-    double getDistance() {
-        return this.distance;
-    }
-
-    @Override
-    String getName() {
-        return "Avante";
+    public static Avante of(double distance) {
+        return new Avante(distance);
     }
 
 }

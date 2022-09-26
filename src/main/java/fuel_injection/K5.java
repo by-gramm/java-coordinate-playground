@@ -1,26 +1,15 @@
 package fuel_injection;
 
-public class K5 extends Car {
+public class K5 extends AbstractCar {
 
-    private final double distance;
+    private static final double DISTANCE_PER_LITER = 13.0;
 
-    public K5(double distance) {
-        this.distance = distance;
+    private K5(double distance) {
+        super(distance, "K5", DISTANCE_PER_LITER);
     }
 
-    @Override
-    double getEfficiency() {
-        return 13.0;
-    }
-
-    @Override
-    double getDistance() {
-        return this.distance;
-    }
-
-    @Override
-    String getName() {
-        return "K5";
+    public static K5 of(double distance) {
+        return new K5(distance);
     }
 
 }

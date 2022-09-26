@@ -1,20 +1,8 @@
 package fuel_injection;
 
-public abstract class Car {
-    private static final String NEWLINE = System.getProperty("line.separator");
+public interface Car {
 
-    abstract double getEfficiency();
+    String getName();
 
-    abstract double getDistance();
-
-    abstract String getName();
-
-    double getChargeQuantity() {
-        return getDistance() / getEfficiency();
-    }
-
-    @Override
-    public String toString() {
-        return getName() + " : " + (int) getChargeQuantity() + "리터" + NEWLINE;
-    }
+    double getChargeQuantity();
 }
