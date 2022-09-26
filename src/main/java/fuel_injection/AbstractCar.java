@@ -2,28 +2,28 @@ package fuel_injection;
 
 public abstract class AbstractCar implements Car {
 
-    private final String name;
-    private final double distance;
-    private final double efficiency;
+    private final CarName name;
+    private final CarDistance distance;
+    private final CarEfficiency efficiency;
 
     public AbstractCar(double distance, String name, double efficiency) {
-        this.distance = distance;
-        this.name = name;
-        this.efficiency = efficiency;
+        this.distance = CarDistance.of(distance);
+        this.name = CarName.of(name);
+        this.efficiency = CarEfficiency.of(efficiency);
     }
 
     @Override
-    public String getName() {
+    public CarName getName() {
         return this.name;
     }
 
     @Override
     public double getChargeQuantity() {
-        return this.distance / this.efficiency;
+        return this.distance.getDistance() / this.efficiency.getEfficiency();
     }
 
     @Override
     public String toString() {
-        return String.format("%s : %d리터\n", this.name, (int) getChargeQuantity());
+        return String.format("%s : %d리터\n", this.name.getName(), (int) getChargeQuantity());
     }
 }

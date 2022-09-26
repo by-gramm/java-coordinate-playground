@@ -2,7 +2,7 @@ package fuel_injection;
 
 public interface Car {
 
-    String getName();
+    CarName getName();
 
     double getChargeQuantity();
 }
