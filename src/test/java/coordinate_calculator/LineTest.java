@@ -21,6 +21,16 @@ public class LineTest {
     }
 
     @Test
+    void 직선의_두_좌표는_달라야_한다() {
+        Point point1 = Point.of(10, 10);
+        Point point2 = Point.of(10, 10);
+
+        assertThatThrownBy(() -> Line.of(point1, point2))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("직선을 이루는 두 좌표는 달라야 합니다.");
+    }
+
+    @Test
     void 입력값_직선으로_변환() {
         String inputString = "(10,10)-(14,15)";
         Line line = LineUtils.toLine(inputString);

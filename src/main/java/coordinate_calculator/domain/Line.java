@@ -13,6 +13,10 @@ public class Line {
     }
 
     public static Line of(Point point1, Point point2) {
+        if (point1.equals(point2)) {
+            throw new IllegalArgumentException("직선을 이루는 두 좌표는 달라야 합니다.");
+        }
+
         return new Line(point1, point2);
     }
 
