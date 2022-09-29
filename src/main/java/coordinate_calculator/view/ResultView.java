@@ -11,7 +11,6 @@ public class ResultView {
     public static final int MAX_COORDINATE_VALUE = 24;
     public static final int MIN_COORDINATE_VALUE = 0;
 
-
     public void showCoordinates(List<Point> points) {
         List<String> lines = createLines(points);
 
