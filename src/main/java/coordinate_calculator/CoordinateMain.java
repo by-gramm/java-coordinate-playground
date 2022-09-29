@@ -3,7 +3,6 @@ package coordinate_calculator;
 import coordinate_calculator.domain.Line;
 
 import java.io.IOException;
-import java.util.Optional;
 
 import static coordinate_calculator.CoordinateCalculator.*;
 

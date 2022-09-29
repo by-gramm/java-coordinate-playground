@@ -25,6 +25,7 @@ public class CoordinateCalculator {
         Point point2 = line.getPoint2();
 
         resultView.showCoordinates(Arrays.asList(point1, point2));
+        resultView.showDistance(line);
     }
 
     private static Line createPoints(String coordinateInput)
