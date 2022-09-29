@@ -1,5 +1,7 @@
 package coordinate_calculator;
 
+import coordinate_calculator.domain.Point;
+import coordinate_calculator.utils.PointUtils;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -27,5 +29,12 @@ public class PointTest {
             assertThatCode(() -> Point.of(x, y))
                     .doesNotThrowAnyException();
         }
+    }
+
+    @Test
+    void 입력값_좌표로_변환() {
+        String inputString = "(5,15)";
+        Point point = PointUtils.toPoint(inputString);
+        assertThat(point).isEqualTo(Point.of(5, 15));
     }
 }

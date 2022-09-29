@@ -1,4 +1,6 @@
-package coordinate_calculator;
+package coordinate_calculator.domain;
+
+import java.util.Objects;
 
 public class Point {
 
@@ -19,5 +21,18 @@ public class Point {
         }
 
         return new Point(x, y);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Point point = (Point) o;
+        return x == point.x && y == point.y;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(x, y);
     }
 }
