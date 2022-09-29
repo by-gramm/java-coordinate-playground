@@ -56,4 +56,16 @@ public class RectangleTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("직사각형 이외의 사각형은 만들 수 없습니다.");
     }
+
+    @Test
+    void 넓이_계산() {
+        List<Point> points = Arrays.asList(
+                Point.of(10, 10), Point.of(22, 10),
+                Point.of(22, 18), Point.of(10, 18)
+        );
+
+        Rectangle rectangle = Rectangle.of(points);
+
+        assertThat(rectangle.getArea()).isEqualTo(96);
+    }
 }

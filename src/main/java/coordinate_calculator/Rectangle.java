@@ -3,6 +3,7 @@ package coordinate_calculator;
 import coordinate_calculator.domain.Point;
 
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -31,6 +32,10 @@ public class Rectangle {
         }
 
         return new Rectangle(points);
+    }
+
+    public double getArea() {
+        return getWidth() * getHeight();
     }
 
     private static boolean isUnique(List<Point> points) {
@@ -71,4 +76,25 @@ public class Rectangle {
 
         return true;
     }
+
+    private double getWidth() {
+        List<Double> xValues = this.points
+                .stream()
+                .map(Point::getX)
+                .distinct()
+                .collect(Collectors.toList());
+
+        return Math.abs(xValues.get(0) - xValues.get(1));
+    }
+
+    private double getHeight() {
+        List<Double> yValues = this.points
+                .stream()
+                .map(Point::getY)
+                .distinct()
+                .collect(Collectors.toList());
+
+        return Math.abs(yValues.get(0) - yValues.get(1));
+    }
+
 }
