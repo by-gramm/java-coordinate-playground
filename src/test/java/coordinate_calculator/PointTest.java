@@ -18,7 +18,7 @@ public class PointTest {
 
     @ParameterizedTest
     @CsvSource(value = {"10:-1:true", "24:24:false", "0:0:false", "10:25:true"}, delimiter = ':')
-    void 좌표값_예외_처리(int x, int y, boolean isException) {
+    void 좌표값_예외_처리(double x, double y, boolean isException) {
         if (isException) {
             assertThatThrownBy(() -> Point.of(x, y))
                     .isInstanceOf(IllegalArgumentException.class)

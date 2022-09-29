@@ -4,6 +4,8 @@ import coordinate_calculator.domain.Line;
 import coordinate_calculator.domain.Point;
 import coordinate_calculator.utils.LineUtils;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -26,5 +28,16 @@ public class LineTest {
         assertThat(line).isEqualTo(Line.of(
                 Point.of(10, 10), Point.of(14, 15)
         ));
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"3:3:9:11:10", "5:5:9:10:6.403124"}, delimiter = ':')
+    void 거리_계산(double x1, double y1, double x2, double y2, double distance) {
+        Point point1 = Point.of(x1, y1);
+        Point point2 = Point.of(x2, y2);
+        Line line = Line.of(point1, point2);
+
+        assertThat(line.getDistance())
+                .isEqualTo(distance, offset(0.0001));
     }
 }

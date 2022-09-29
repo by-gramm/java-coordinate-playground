@@ -28,4 +28,11 @@ public class Line {
     public int hashCode() {
         return Objects.hash(point1, point2);
     }
+
+    public double getDistance() {
+        double dx = point1.getX() - point2.getX();
+        double dy = point1.getY() - point2.getY();
+
+        return Math.pow(dx * dx + dy * dy, 0.5);
+    }
 }
