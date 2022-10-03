@@ -1,7 +1,8 @@
 package coordinate_calculator;
 
 import coordinate_calculator.domain.Point;
-import org.assertj.core.api.Assertions;
+import coordinate_calculator.domain.Rectangle;
+import coordinate_calculator.domain.Shape;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -18,7 +19,7 @@ public class RectangleTest {
                 Point.of(22, 18), Point.of(10, 18)
         );
 
-        Rectangle rectangle = Rectangle.of(points);
+        Rectangle rectangle = (Rectangle) Shape.of(points);
         assertThat(rectangle).isInstanceOf(Rectangle.class);
     }
 
@@ -28,7 +29,7 @@ public class RectangleTest {
                 Point.of(10, 10), Point.of(22, 10), Point.of(22, 18)
         );
 
-        assertThatThrownBy(() -> Rectangle.of(points))
+        assertThatThrownBy(() -> Shape.of(points))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("직사각형의 점의 개수는 4개여야 합니다.");
     }
@@ -40,7 +41,7 @@ public class RectangleTest {
                 Point.of(20, 20), Point.of(20, 20)
         );
 
-        assertThatThrownBy(() -> Rectangle.of(points))
+        assertThatThrownBy(() -> Shape.of(points))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("직사각형을 이루는 좌표는 중복될 수 없습니다.");
     }
@@ -52,7 +53,7 @@ public class RectangleTest {
                 Point.of(10, 20), Point.of(20, 18)
         );
 
-        assertThatThrownBy(() -> Rectangle.of(points))
+        assertThatThrownBy(() -> Shape.of(points))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("직사각형 이외의 사각형은 만들 수 없습니다.");
     }
@@ -64,7 +65,7 @@ public class RectangleTest {
                 Point.of(22, 18), Point.of(10, 18)
         );
 
-        Rectangle rectangle = Rectangle.of(points);
+        Rectangle rectangle = (Rectangle) Shape.of(points);
 
         assertThat(rectangle.getArea()).isEqualTo(96);
     }

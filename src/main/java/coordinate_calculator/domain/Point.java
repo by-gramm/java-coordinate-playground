@@ -1,6 +1,8 @@
 package coordinate_calculator.domain;
 
+import java.util.List;
 import java.util.Objects;
+import java.util.stream.IntStream;
 
 public class Point implements Comparable<Point> {
 
@@ -47,5 +49,17 @@ public class Point implements Comparable<Point> {
     @Override
     public int compareTo(Point point) {
         return (int) (this.x - point.getX());
+    }
+
+    public boolean isUnique(List<Point> points, int index) {
+        return IntStream.range(index + 1, points.size())
+                .noneMatch(cntIdx -> this.equals(points.get(cntIdx)));
+    }
+
+    public double getDistance(Point point) {
+        double dx = x - point.getX();
+        double dy = y - point.getY();
+
+        return Math.pow(dx * dx + dy * dy, 0.5);
     }
 }

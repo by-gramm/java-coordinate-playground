@@ -61,7 +61,7 @@ public class ResultView {
         System.out.print(" 0 ");
 
         for (int num = 2; num <= MAX_COORDINATE_VALUE; num = num + 2) {
-            System.out.print(String.format("%6d", num));
+            System.out.printf("%6d", num);
         }
     }
 
