@@ -7,6 +7,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public abstract class Shape {
 
     public static final int LINE_SIZE = 2;
+    private static final int TRIANGLE_SIZE = 3;
 
     private final List<Point> points;
 
@@ -18,6 +19,9 @@ public abstract class Shape {
     public static Shape of(List<Point> points) {
         if (points.size() == LINE_SIZE) {
             return Line.create(points);
+        }
+        if (points.size() == TRIANGLE_SIZE) {
+            return Triangle.create(points);
         }
 
         return Rectangle.create(points);

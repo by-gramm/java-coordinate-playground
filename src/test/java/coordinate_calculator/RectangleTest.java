@@ -19,7 +19,7 @@ public class RectangleTest {
                 Point.of(22, 18), Point.of(10, 18)
         );
 
-        Rectangle rectangle = (Rectangle) Shape.of(points);
+        Rectangle rectangle = Rectangle.create(points);
         assertThat(rectangle).isInstanceOf(Rectangle.class);
     }
 
@@ -29,7 +29,7 @@ public class RectangleTest {
                 Point.of(10, 10), Point.of(22, 10), Point.of(22, 18)
         );
 
-        assertThatThrownBy(() -> Shape.of(points))
+        assertThatThrownBy(() -> Rectangle.create(points))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("직사각형의 점의 개수는 4개여야 합니다.");
     }
