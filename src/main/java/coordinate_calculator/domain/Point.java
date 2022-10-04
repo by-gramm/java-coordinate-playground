@@ -62,4 +62,16 @@ public class Point implements Comparable<Point> {
 
         return Math.pow(dx * dx + dy * dy, 0.5);
     }
+
+    public boolean isColinear(Point pointA, Point pointB) {
+        if (this.x == pointA.getX() && this.x == pointB.getX()) {
+            return true;
+        }
+
+        return getInclination(pointA) == getInclination(pointB);
+    }
+
+    private double getInclination(Point point) {
+        return Math.abs(this.y - point.getY()) / Math.abs(this.x - point.getX());
+    }
 }
