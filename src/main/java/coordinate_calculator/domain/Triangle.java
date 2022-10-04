@@ -41,17 +41,16 @@ public class Triangle extends Shape implements AreaCalculable {
         return Math.sqrt(s * (s - distanceA) * (s - distanceB) * (s - distanceC));
     }
 
-    private double getPerimeter() {
-        return distances.stream()
-                .mapToDouble(Double::doubleValue)
-                .sum();
-    }
-
     private static boolean isColinear(List<Point> points) {
         Point pointA = points.get(0);
         Point pointB = points.get(1);
         Point pointC = points.get(2);
 
         return pointA.isColinear(pointB, pointC);
+    }
+
+    @Override
+    public String toString() {
+        return "삼각형의 넓이 = " + getArea();
     }
 }

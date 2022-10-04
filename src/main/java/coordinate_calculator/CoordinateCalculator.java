@@ -1,8 +1,6 @@
 package coordinate_calculator;
 
-import coordinate_calculator.domain.Line;
 import coordinate_calculator.domain.Point;
-import coordinate_calculator.domain.Rectangle;
 import coordinate_calculator.domain.Shape;
 import coordinate_calculator.utils.PointUtils;
 import coordinate_calculator.view.InputView;
