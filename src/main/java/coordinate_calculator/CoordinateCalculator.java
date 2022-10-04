@@ -1,6 +1,8 @@
 package coordinate_calculator;
 
+import coordinate_calculator.domain.Line;
 import coordinate_calculator.domain.Point;
+import coordinate_calculator.domain.Rectangle;
 import coordinate_calculator.domain.Shape;
 import coordinate_calculator.utils.PointUtils;
 import coordinate_calculator.view.InputView;
@@ -22,7 +24,7 @@ public class CoordinateCalculator {
     public static void showResult(Shape shape) {
         resultView.showCoordinates(shape.getPoints());
 
-        // TODO: 직선이면 거리, 삼각형이나 사각형이면 너비 출력하기
+        resultView.showResult(shape);
     }
 
     private static List<Point> createPoints(String coordinateInput) throws IOException {

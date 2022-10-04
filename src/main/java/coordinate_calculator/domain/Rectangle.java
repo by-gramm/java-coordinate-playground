@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-public class Rectangle extends Shape {
+public class Rectangle extends Shape implements AreaCalculable {
 
     private static final int NUMBER_OF_RECTANGLE_POINTS = 4;
 
@@ -40,6 +40,7 @@ public class Rectangle extends Shape {
         return new Rectangle(points);
     }
 
+    @Override
     public double getArea() {
         return this.width * this.height;
     }
@@ -69,4 +70,8 @@ public class Rectangle extends Shape {
                 Objects.equals(sortedValues.get(2), sortedValues.get(3));
     }
 
+    @Override
+    public String toString() {
+        return "직시각형의 넓이 = " + getArea();
+    }
 }

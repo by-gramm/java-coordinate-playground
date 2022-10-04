@@ -1,7 +1,6 @@
 package coordinate_calculator.view;
 
-import coordinate_calculator.domain.Line;
-import coordinate_calculator.domain.Point;
+import coordinate_calculator.domain.*;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -65,7 +64,7 @@ public class ResultView {
         }
     }
 
-    public void showDistance(Line line) {
-        System.out.println("\n두 점 사이의 거리 = " + line.getDistance());
+    public void showResult(Shape shape) {
+        System.out.println("\n" + shape);
     }
 }

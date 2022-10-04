@@ -27,4 +27,9 @@ public class Line extends Shape {
 
         return point1.getDistance(point2);
     }
+
+    @Override
+    public String toString() {
+        return "직선의 거리 = " + getDistance();
+    }
 }
