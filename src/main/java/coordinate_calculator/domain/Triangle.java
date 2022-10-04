@@ -1,11 +1,22 @@
 package coordinate_calculator.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Triangle extends Shape implements AreaCalculable {
 
+    private final List<Double> distances = new ArrayList<>();
+
     private Triangle(List<Point> points) {
         super(points);
+
+        Point pointA = points.get(0);
+        Point pointB = points.get(1);
+        Point pointC = points.get(2);
+
+        distances.add(pointA.getDistance(pointB));
+        distances.add(pointA.getDistance(pointC));
+        distances.add(pointB.getDistance(pointC));
     }
 
     public static Triangle create(List<Point> points) {
@@ -20,14 +31,27 @@ public class Triangle extends Shape implements AreaCalculable {
 
     @Override
     public double getArea() {
-        return 0;
+        // 삼각형의 세 변의 길이가 a, b, c이고 s = (a + b + c) // 2일 때,
+        // 삼각형의 넓이 = ( s * (s - a) * (s - b) * (s - c) ) ** 0.5
+        double distanceA = distances.get(0);
+        double distanceB = distances.get(1);
+        double distanceC = distances.get(2);
+        double s = (distanceA + distanceB + distanceC) / 2;
+
+        return Math.sqrt(s * (s - distanceA) * (s - distanceB) * (s - distanceC));
+    }
+
+    private double getPerimeter() {
+        return distances.stream()
+                .mapToDouble(Double::doubleValue)
+                .sum();
     }
 
     private static boolean isColinear(List<Point> points) {
-        Point point1 = points.get(0);
-        Point point2 = points.get(1);
-        Point point3 = points.get(2);
+        Point pointA = points.get(0);
+        Point pointB = points.get(1);
+        Point pointC = points.get(2);
 
-        return point1.isColinear(point2, point3);
+        return pointA.isColinear(pointB, pointC);
     }
 }
