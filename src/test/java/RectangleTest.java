@@ -35,4 +35,10 @@ public class RectangleTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("직사각형이 아닌 사각형은 생성할 수 없습니다.");
     }
+
+    @Test
+    void 넓이_계산() {
+        Rectangle rectangle = Rectangle.of(Arrays.asList(pointA, pointB, pointC, pointD));
+        assertThat(rectangle.getArea()).isEqualTo(50);
+    }
 }

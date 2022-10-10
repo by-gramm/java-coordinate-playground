@@ -1,7 +1,6 @@
 package domain;
 
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Rectangle extends AbstractShape {
@@ -52,7 +51,13 @@ public class Rectangle extends AbstractShape {
 
     @Override
     public double getArea() {
-        return 0;
+        ArrayList<Integer> uniqueXList = new ArrayList<>(new HashSet<>(getXList(getPoints())));
+        ArrayList<Integer> uniqueYList = new ArrayList<>(new HashSet<>(getYList(getPoints())));
+
+        int width = Math.abs(uniqueXList.get(0) - uniqueXList.get(1));
+        int height = Math.abs(uniqueYList.get(0) - uniqueYList.get(1));
+
+        return width * height;
     }
 
     @Override
