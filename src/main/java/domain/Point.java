@@ -65,11 +65,11 @@ public class Point {
         return this.getX() == point.getX();
     }
 
-    private int getX() {
+    public int getX() {
         return this.x;
     }
 
-    private int getY() {
+    public int getY() {
         return this.y;
     }
 
