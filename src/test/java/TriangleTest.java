@@ -41,4 +41,11 @@ public class TriangleTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("삼각형의 세 좌표는 일직선상에 있지 않아야 합니다.");
     }
+
+    @Test
+    void 넓이_계산() {
+        Triangle triangle = Triangle.of(Arrays.asList(pointA, pointB, pointC));
+        assertThat(triangle.getArea())
+                .isEqualTo(25.0, offset(0.0001));
+    }
 }

@@ -23,7 +23,21 @@ public class Triangle extends AbstractShape {
 
     @Override
     public double getArea() {
-        return 0;
+        Point pointA = getPoints().get(0);
+        Point pointB = getPoints().get(1);
+        Point pointC = getPoints().get(2);
+
+        double distanceA = pointA.getDistance(pointB);
+        double distanceB = pointB.getDistance(pointC);
+        double distanceC = pointC.getDistance(pointA);
+
+        return calculateArea(distanceA, distanceB, distanceC);
+    }
+
+    private double calculateArea(double distanceA, double distanceB, double distanceC) {
+        double s = (distanceA + distanceB + distanceC) / 2;
+
+        return Math.sqrt(s * (s - distanceA) * (s - distanceB) * (s - distanceC));
     }
 
     @Override
