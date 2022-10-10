@@ -27,6 +27,24 @@ public class Point {
         }
     }
 
+    public double getDistance(Point point) {
+        int xDistance = this.x - point.getX();
+        int yDistance = this.y - point.getY();
+
+        double xSquare = Math.pow(xDistance, 2);
+        double ySquare = Math.pow(yDistance, 2);
+
+        return Math.pow(xSquare + ySquare, 0.5);
+    }
+
+    private int getX() {
+        return this.x;
+    }
+
+    private int getY() {
+        return this.y;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

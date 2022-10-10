@@ -20,4 +20,9 @@ public abstract class AbstractShape implements Shape {
             throw new IllegalArgumentException("도형을 이루는 좌표값은 중복될 수 없습니다.");
         }
     }
+
+    @Override
+    public List<Point> getPoints() {
+        return this.pointList;
+    }
 }

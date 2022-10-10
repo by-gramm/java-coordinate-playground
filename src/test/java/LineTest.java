@@ -30,4 +30,11 @@ public class LineTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("도형을 이루는 좌표값은 중복될 수 없습니다.");
     }
+
+    @Test
+    void 직선_거리_계산() {
+        Line line = Line.of(Arrays.asList(pointA, pointB));
+        assertThat(line.getArea())
+                .isEqualTo(7.071, offset(0.0001));
+    }
 }
