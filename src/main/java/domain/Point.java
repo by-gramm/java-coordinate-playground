@@ -28,13 +28,41 @@ public class Point {
     }
 
     public double getDistance(Point point) {
-        int xDistance = this.x - point.getX();
-        int yDistance = this.y - point.getY();
-
-        double xSquare = Math.pow(xDistance, 2);
-        double ySquare = Math.pow(yDistance, 2);
+        double xSquare = Math.pow(getXDifference(point), 2);
+        double ySquare = Math.pow(getYDifference(point), 2);
 
         return Math.pow(xSquare + ySquare, 0.5);
+    }
+
+    private int getXDifference(Point point) {
+        return this.getX() - point.getX();
+    }
+
+    private int getYDifference(Point point) {
+        return this.getY() - point.getY();
+    }
+
+    public void checkColinear(Point pointA, Point pointB) {
+        if (isVertical(pointA) ^ isVertical(pointB)) {
+            return;
+        }
+        if (isVertical(pointA) && isVertical(pointB)) {
+            throw new IllegalArgumentException("삼각형의 세 좌표는 일직선상에 있지 않아야 합니다.");
+        }
+        if (getInclination(pointA) == getInclination(pointB)) {
+            throw new IllegalArgumentException("삼각형의 세 좌표는 일직선상에 있지 않아야 합니다.");
+        }
+    }
+
+    private double getInclination(Point point) {
+        int dx = getXDifference(point);
+        int dy = getYDifference(point);
+
+        return dy / dx;
+    }
+
+    private boolean isVertical(Point point) {
+        return this.getX() == point.getX();
     }
 
     private int getX() {

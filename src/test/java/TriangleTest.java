@@ -12,12 +12,14 @@ public class TriangleTest {
     private Point pointA;
     private Point pointB;
     private Point pointC;
+    private Point pointD;
 
     @BeforeEach
     void setup() {
         pointA = Point.of(5, 5);
         pointB = Point.of(10, 10);
-        pointC = Point.of(15, 15);
+        pointC = Point.of(15, 5);
+        pointD = Point.of(15, 15);
     }
 
     @Test
@@ -31,5 +33,12 @@ public class TriangleTest {
         assertThatThrownBy(() -> Triangle.of(Arrays.asList(pointA, pointB, pointA)))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("삼각형을 이루는 좌표값은 중복될 수 없습니다.");
+    }
+
+    @Test
+    void 삼각형의_세_좌표는_일직선상에_있지_않아야_한다() {
+        assertThatThrownBy(() -> Triangle.of(Arrays.asList(pointA, pointB, pointD)))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("삼각형의 세 좌표는 일직선상에 있지 않아야 합니다.");
     }
 }
