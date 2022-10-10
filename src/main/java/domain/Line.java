@@ -20,4 +20,9 @@ public class Line extends AbstractShape {
 
         return pointA.getDistance(pointB);
     }
+
+    @Override
+    public String getType() {
+        return "직선";
+    }
 }

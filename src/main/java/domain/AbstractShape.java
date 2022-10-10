@@ -17,7 +17,7 @@ public abstract class AbstractShape implements Shape {
     @Override
     public void checkDuplicate(Point point) {
         if (this.pointList.contains(point)) {
-            throw new IllegalArgumentException("도형을 이루는 좌표값은 중복될 수 없습니다.");
+            throw new IllegalArgumentException(this.getType() + "을 이루는 좌표값은 중복될 수 없습니다.");
         }
     }
 

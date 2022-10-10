@@ -9,4 +9,6 @@ public interface Shape {
     List<Point> getPoints();
 
     double getArea();
+
+    String getType();
 }
