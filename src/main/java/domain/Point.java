@@ -1,5 +1,7 @@
 package domain;
 
+import java.util.Objects;
+
 public class Point {
     public static final int MIN_COORDINATE_VALUE = 0;
     public static final int MAX_COORDINATE_VALUE = 24;
@@ -23,5 +25,18 @@ public class Point {
         if (value < MIN_COORDINATE_VALUE || value > MAX_COORDINATE_VALUE) {
             throw new IllegalArgumentException("좌표값은 0 이상 24이하여야 합니다.");
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Point point = (Point) o;
+        return x == point.x && y == point.y;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(x, y);
     }
 }
