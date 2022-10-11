@@ -1,4 +1,6 @@
 import domain.Point;
+import domain.Shape;
+import domain.ShapeFactory;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -7,7 +9,6 @@ import view.InputView;
 
 import java.util.Arrays;
 import java.util.InputMismatchException;
-import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -24,15 +25,7 @@ public class InputViewTest {
 
     @Test
     void 입력값_받기() {
-        List<Point> points = InputView.inputCoordinates("(5,5)-(10,15)");
-        assertThat(points).isEqualTo(Arrays.asList(pointA, pointB));
-    }
-
-    @ParameterizedTest
-    @ValueSource(strings = {"(10)-(5,5)", "10,10-20,20", "(1.5,2.5)-(10,10)", "(,10)-(5,15)"})
-    void 입력값_형식_검사(String inputString) {
-        assertThatThrownBy(() -> InputView.inputCoordinates(inputString))
-                .isInstanceOf(InputMismatchException.class)
-                .hasMessage("입력 형식이 올바르지 않습니다.");
+        Shape shape = InputView.inputCoordinates("(5,5)-(10,15)");
+        assertThat(shape).isEqualTo(ShapeFactory.create(Arrays.asList(pointA, pointB)));
     }
 }
