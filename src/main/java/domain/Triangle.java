@@ -44,4 +44,9 @@ public class Triangle extends AbstractShape {
     public String getType() {
         return "삼각형";
     }
+
+    @Override
+    public String getAreaInfo() {
+        return getType() + "의 넓이는 " + getArea();
+    }
 }

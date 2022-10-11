@@ -25,4 +25,9 @@ public class Line extends AbstractShape {
     public String getType() {
         return "직선";
     }
+
+    @Override
+    public String getAreaInfo() {
+        return getType() + "의 길이는 " + getArea();
+    }
 }

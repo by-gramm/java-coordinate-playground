@@ -64,4 +64,9 @@ public class Rectangle extends AbstractShape {
     public String getType() {
         return "사각형";
     }
+
+    @Override
+    public String getAreaInfo() {
+        return getType() + "의 넓이는 " + getArea();
+    }
 }
